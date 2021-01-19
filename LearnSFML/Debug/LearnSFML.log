@@ -1,2 +1,21 @@
 ﻿  Main.cpp
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(39,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(40,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(45,54): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(45,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(73,18): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(74,18): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(75,21): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
   LearnSFML.vcxproj -> C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Debug\LearnSFML.exe
