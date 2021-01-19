@@ -1,8 +1,13 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include "Main.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "hello world");
+	int screenWidth = sf::VideoMode::getDesktopMode().width;
+	int screenHeight = sf::VideoMode::getDesktopMode().height;
+
+	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "LearnSFML", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
 
 	sf::Event event;
 
