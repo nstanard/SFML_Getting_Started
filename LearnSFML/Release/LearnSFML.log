@@ -1,0 +1,6 @@
+﻿  Main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 26 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  LearnSFML.vcxproj -> C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Release\LearnSFML.exe

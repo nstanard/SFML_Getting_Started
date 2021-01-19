@@ -1,0 +1,2 @@
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Debug\LearnSFML.exe
+C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Debug\LearnSFML.pdb
