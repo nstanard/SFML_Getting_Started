@@ -12,8 +12,10 @@ public:
 
 private:
 	sf::CircleShape ball;
+
 	float speed;
 	float radius;
+
 	float gameViewWidth;
 	float gameViewHeight;
 };

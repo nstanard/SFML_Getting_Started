@@ -1,5 +1,2 @@
-﻿  Main.cpp
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(19,55): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(19,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+﻿  Paddle.cpp
   LearnSFML.vcxproj -> C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Debug\LearnSFML.exe

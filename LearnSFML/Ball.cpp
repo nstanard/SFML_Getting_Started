@@ -2,10 +2,11 @@
 
 Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float positionY, float speed)
 {
-	this->speed = speed;
-	radius = 10.0f;
 	this->gameViewWidth = gameViewWidth;
 	this->gameViewHeight = gameViewHeight;
+
+	this->speed = speed;
+	radius = 10.0f;
 
 	ball.setPosition(positionX, positionY);
 	ball.setRadius(radius - 3);
