@@ -3,6 +3,9 @@
 
 int main()
 {
+	sf::ContextSettings settings;
+	settings.antialiasingLevel = 8;
+
 	int screenWidth = sf::VideoMode::getDesktopMode().width;
 	int screenHeight = sf::VideoMode::getDesktopMode().height;
 
@@ -11,39 +14,38 @@ int main()
 	float displayHeight = screenHeight / 1.5;
 	float halfDisplayHeight = displayHeight / 2;
 
-	// | sf::Style::Fullscreen
-	sf::RenderWindow window(sf::VideoMode(displayWidth, displayHeight), "LearnSFML", sf::Style::Close | sf::Style::Titlebar);
+	// sf::Style::Fullscreen
+	sf::RenderWindow window(sf::VideoMode(displayWidth, displayHeight), "LearnSFML", sf::Style::Close | sf::Style::Titlebar, settings);
 
 	sf::Event event;
 
+	/* TIME */
+	float timer = 0;
 	sf::Clock clock = sf::Clock::Clock();
-
-	// TODO: Implement acceleration?
-	int accelerationV = 0;
-
-	float paddleSpeed = 200; // 200 - 250 seems to be the max speed we should set... higher and it "lags"
+	
+	/* PADDLE */
+	float paddleSpeed = 400.0f;
 	float paddleWidth = 15.0f;
 	float halfPaddleWidth = paddleWidth / 2;
 	float paddleHeight = 100.0f;
-	
-	/* PADDLE */
 	sf::Vector2f paddleVector(paddleWidth, paddleHeight);
 	sf::RectangleShape paddle(paddleVector);
 	paddle.setFillColor(sf::Color::White);
 
 	/* BALL */
-	sf::CircleShape ball(10.f);
+	const float ballSpeed = 300.0f;
+	const float ballRadius = 10.0f;
+	sf::CircleShape ball;
 	ball.setPosition(halfDisplayWidth, halfDisplayHeight);
+	ball.setRadius(ballRadius - 3);
+	ball.setFillColor(sf::Color::White);
+	ball.setOrigin(ballRadius / 2, ballRadius / 2);
 
-	/* WALL */
-	sf::Vector2f rightWallVector(halfPaddleWidth, displayHeight);
-	sf::RectangleShape rightWall(rightWallVector);
-	rightWall.setFillColor(sf::Color::White);
-	rightWall.setPosition(displayWidth - halfPaddleWidth, 0);
-
-	/* SCORE / TEXT */
+	/* SCORE */
 	sf::Font font;
-	font.loadFromFile("consola.ttf");
+	if (!font.loadFromFile("consola.ttf"))
+		return EXIT_FAILURE;
+
 	sf::Text text;
 	text.setFont(font);
 	text.setString("0");
@@ -51,45 +53,75 @@ int main()
 	text.setCharacterSize(50);
 	text.setFillColor(sf::Color::White);
 
+	/* TIMER */
+	sf::Text timerOutput;
+	timerOutput.setFont(font);
+	timerOutput.setPosition(displayWidth - 100, displayHeight - 25);
+	timerOutput.setCharacterSize(25);
+	timerOutput.setFillColor(sf::Color::White);
+
 	while (window.isOpen())
 	{
 		while (window.pollEvent(event)) {
 			float deltaTime = clock.restart().asSeconds();
-			int positionX = paddle.getPosition().x;
+			timer += deltaTime;
+			timerOutput.setString(std::to_string(timer));
+
+			// TODO: Make paddle it's own class with move/draw methods
+			/* PADDLE CONTROL */
 			int paddleTop = paddle.getPosition().y; // paddle Top Y position
 			int paddleBottom = paddle.getPosition().y + paddleHeight; // paddle Bottom Y position
+			float paddleVelocity = ballSpeed * deltaTime;
 
 			if (paddleTop >= 0 && (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)))
 			{
-				paddle.move(0.0f, -paddleSpeed * deltaTime); // smooth(er), but not as good as we want
-			}
-			if (paddleBottom <= displayHeight && (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)))
-			{
-				paddle.move(0.0f, paddleSpeed * deltaTime); // smooth(er), but not as good as we want
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-			{
-				window.close();
-			}
-			
-			/* CLOSE */
-			if (event.type == sf::Event::Closed) {
-				window.close();
+				paddle.move(0.0f, -paddleVelocity);
 			}
 
+			if (paddleBottom <= displayHeight && (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)))
+			{
+				paddle.move(0.0f, paddleVelocity);
+			}
+			/* END PADDLE CONTROL */
+
+			// TODO: Make ball it's own class with move/draw methods
+			/* BALL CONTROL */
+			int ballX = ball.getPosition().x; // paddle Top X position
+			int ballY = ball.getPosition().y; // paddle Top Y position
+			float ballVelocity = ballSpeed * deltaTime;
+
+			if (ballX >= displayWidth) {
+				
+			}
+			else if (ballX <= 0) {
+				
+			}
+			else if (ballY >= displayHeight) {
+				
+			}
+			else
+			{
+				ball.move(ballVelocity, ballVelocity);
+			}
+			/* END BALL CONTROL */
+
+			/* CLOSE */
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || event.type == sf::Event::Closed)
+				window.close();
+
 			/* CLEAR */
-			window.clear();
+			window.clear(sf::Color(50, 200, 50));
 
 			/* DRAW */
 			window.draw(paddle);
 			window.draw(ball);
-			window.draw(rightWall);
 			window.draw(text);
+			window.draw(timerOutput);
 
 			/* DISPLAY */
 			window.display();
 		}
 	}
 
-	return 0;
+	return EXIT_SUCCESS;
 }
