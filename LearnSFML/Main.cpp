@@ -34,7 +34,7 @@ int main()
 	srand(time(NULL));
 
 	// Ball
-	float ballSpeed = 20.0f; 
+	float ballSpeed = 175.0f; 
 	float ballStartingX = 25;
 	float ballStartingY = rand() % (int)gameViewHeight + 25;
 	Ball ball(gameViewWidth, gameViewHeight, ballStartingX, ballStartingY, ballSpeed);
@@ -55,8 +55,6 @@ int main()
 	{
 		while (window.pollEvent(event)) {
 			float deltaTime = clock.restart().asSeconds();
-			//float deltaTime = 1.0 / 60.0;
-			//float deltaTime = 1.0 / 244.0;
 
 			/* MOVE & UPDATE */
 			ball.Move(deltaTime);

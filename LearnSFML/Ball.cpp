@@ -31,19 +31,19 @@ void Ball::Move(float deltaTime)
 	float velocityX = ballVelocity;
 	float velocityY = ballVelocity;
 
-	if (ball.getPosition().x >= gameViewWidth - ballSize) {
+	if (ball.getPosition().x >= gameViewWidth - ballSize * 2) {
 		// RIGHT!
 		//ball.setPosition(startingX, startingY);
 	}
-	else if (ball.getPosition().y >= gameViewHeight - ballSize) {
+	else if (ball.getPosition().y >= gameViewHeight - ballSize * 2) {
 		// BOTTOM!
 		//ball.setPosition(startingX, startingY);
 	}
-	else if (ball.getPosition().x <= 0 + ballSize) {
+	else if (ball.getPosition().x <= 0 + ballSize * 2) {
 		// LEFT!
 		//ball.setPosition(startingX, startingY);
 	}
-	else if (ball.getPosition().y <= 0 + ballSize) {
+	else if (ball.getPosition().y <= 0 + ballSize * 2) {
 		// TOP!
 		//ball.setPosition(startingX, startingY);
 	}
@@ -54,9 +54,7 @@ void Ball::Move(float deltaTime)
 		//ball.move(.05, -.05); // right, up
 		//ball.move(.05, .05); // right, down
 		
-		//float test = .05;
-		//ball.move(test, test); // right, down
-		ball.move(-velocityX, 0);
+		ball.move(velocityX, velocityY);
 	}
 
 }
