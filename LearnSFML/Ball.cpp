@@ -10,7 +10,7 @@ Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float pos
 
 	radius = 10.0f;
 
-	std::cout << gameViewHeight;
+	//std::cout << gameViewHeight;
 	// https://www.cplusplus.com/reference/cstdlib/rand/
 	// 0 -> gameViewHeight
 	//startingY = rand() % gameViewHeight;
@@ -25,9 +25,16 @@ Ball::~Ball()
 {
 }
 
+/*
+	Direction Vectors & Dot Products
+	 - relationship between unit vectors represented as a scaler value, the dot product
+*/
 void Ball::Move(float deltaTime)
 {
+	// Velocity = Speed in a given direction
 	float ballVelocity = speed * deltaTime;
+	float velocityX = ballVelocity;
+	float velocityY = ballVelocity;
 
 	if (ball.getPosition().x >= gameViewWidth - radius - 2) {
 
@@ -40,7 +47,12 @@ void Ball::Move(float deltaTime)
 	}
 	else
 	{
-		ball.move(ballVelocity, ballVelocity);
+		//ball.move(-.05, .05); // left, down
+		//ball.move(-.05, -.05); // left, up
+		//ball.move(.05, -.05); // right, up
+		//ball.move(.05, .05); // right, up
+
+		ball.move(velocityX, velocityY);
 	}
 }
 
