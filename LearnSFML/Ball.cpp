@@ -10,11 +10,6 @@ Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float pos
 
 	radius = 10.0f;
 
-	//std::cout << gameViewHeight;
-	// https://www.cplusplus.com/reference/cstdlib/rand/
-	// 0 -> gameViewHeight
-	//startingY = rand() % gameViewHeight;
-
 	ball.setPosition(positionX, positionY);
 	ball.setRadius(radius - 3);
 	ball.setFillColor(sf::Color::White);
@@ -25,10 +20,6 @@ Ball::~Ball()
 {
 }
 
-/*
-	Direction Vectors & Dot Products
-	 - relationship between unit vectors represented as a scaler value, the dot product
-*/
 void Ball::Move(float deltaTime)
 {
 	// Velocity = Speed in a given direction
@@ -50,9 +41,11 @@ void Ball::Move(float deltaTime)
 		//ball.move(-.05, .05); // left, down
 		//ball.move(-.05, -.05); // left, up
 		//ball.move(.05, -.05); // right, up
-		//ball.move(.05, .05); // right, up
+		//ball.move(.05, .05); // right, down
+		
+		ball.move(.05, .05); // right, down
 
-		ball.move(velocityX, velocityY);
+		//ball.move(velocityX, velocityY);
 	}
 }
 
