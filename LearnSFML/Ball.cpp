@@ -8,7 +8,11 @@ Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float pos
 	this->gameViewHeight = gameViewHeight;
 	this->speed = speed;
 
+	this->startingX = positionX;
+	this->startingY = positionY;
+
 	radius = 10.0f;
+	ballSize = radius - 3;
 
 	ball.setPosition(positionX, positionY);
 	ball.setRadius(radius - 3);
@@ -27,14 +31,21 @@ void Ball::Move(float deltaTime)
 	float velocityX = ballVelocity;
 	float velocityY = ballVelocity;
 
-	if (ball.getPosition().x >= gameViewWidth - radius - 2) {
-
+	if (ball.getPosition().x >= gameViewWidth - ballSize) {
+		// RIGHT!
+		//ball.setPosition(startingX, startingY);
 	}
-	else if (ball.getPosition().x <= radius - 2) {
-
+	else if (ball.getPosition().y >= gameViewHeight - ballSize) {
+		// BOTTOM!
+		//ball.setPosition(startingX, startingY);
 	}
-	else if (ball.getPosition().y >= gameViewHeight - radius - 2) {
-
+	else if (ball.getPosition().x <= 0 + ballSize) {
+		// LEFT!
+		//ball.setPosition(startingX, startingY);
+	}
+	else if (ball.getPosition().y <= 0 + ballSize) {
+		// TOP!
+		//ball.setPosition(startingX, startingY);
 	}
 	else
 	{
@@ -43,10 +54,11 @@ void Ball::Move(float deltaTime)
 		//ball.move(.05, -.05); // right, up
 		//ball.move(.05, .05); // right, down
 		
-		ball.move(.05, .05); // right, down
-
-		//ball.move(velocityX, velocityY);
+		//float test = .05;
+		//ball.move(test, test); // right, down
+		ball.move(-velocityX, 0);
 	}
+
 }
 
 void Ball::Draw(sf::RenderWindow& window)

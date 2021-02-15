@@ -34,7 +34,7 @@ int main()
 	srand(time(NULL));
 
 	// Ball
-	float ballSpeed = 50.0f; 
+	float ballSpeed = 20.0f; 
 	float ballStartingX = 25;
 	float ballStartingY = rand() % (int)gameViewHeight + 25;
 	Ball ball(gameViewWidth, gameViewHeight, ballStartingX, ballStartingY, ballSpeed);

@@ -16,7 +16,11 @@ private:
 
 	float speed;
 	float radius;
+	float ballSize;
 
 	float gameViewWidth;
 	float gameViewHeight;
+
+	float startingX;
+	float startingY;
 };
