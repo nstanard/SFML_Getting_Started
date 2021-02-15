@@ -1,6 +1,6 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 
-#pragma once
 class Timer
 {
 public:
@@ -8,7 +8,7 @@ public:
 	~Timer();
 
 	void Move(float deltaTime);
-	void Draw(sf::RenderWindow window);
+	void Draw(sf::RenderWindow& window);
 
 private:
 

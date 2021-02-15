@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Paddle.h"
 
+// https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1RectangleShape.php
 Paddle::Paddle(float gameViewWidth, float gameViewHeight, float speed)
 {
 	this->gameViewWidth = gameViewWidth;

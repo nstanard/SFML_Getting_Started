@@ -1,29 +1,27 @@
 #include "ScoreBoard.h"
+#include <iostream>
 
-//sf::Font font;
-	//if (!font.loadFromFile("consola.ttf"))
-	//	return EXIT_FAILURE;
-
-//sf::Text text;
-//text.setFont(font);
-//text.setString("0");
-//text.setPosition(halfDisplayWidth, 0);
-//text.setCharacterSize(50);
-//text.setFillColor(sf::Color::White);
-
-ScoreBoard::ScoreBoard()
+ScoreBoard::ScoreBoard(float gameViewWidth, float gameViewHeight, sf::Font& font)
 {
+	float halfGameViewWidth = gameViewWidth / 2;
+
+	text.setString("0");
+	text.setCharacterSize(50);
+	text.setFont(font);
+	text.setPosition(10, 10);
 }
 
 ScoreBoard::~ScoreBoard()
 {
 }
 
-void ScoreBoard::Move(float deltaTime)
+void ScoreBoard::Update(int playerScore)
 {
+	std::string score = std::to_string(playerScore);
+	text.setString(score);
 }
 
-void ScoreBoard::Draw(sf::RenderWindow window)
+void ScoreBoard::Draw(sf::RenderWindow& window)
 {
+	window.draw(text);
 }
-

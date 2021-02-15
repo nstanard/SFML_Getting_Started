@@ -19,6 +19,6 @@ void Timer::Move(float deltaTime)
 {
 }
 
-void Timer::Draw(sf::RenderWindow window)
+void Timer::Draw(sf::RenderWindow& window)
 {
 }

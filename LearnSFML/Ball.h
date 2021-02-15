@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+// https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1CircleShape.php
 class Ball
 {
 public:

@@ -1,5 +1,4 @@
 ## Goals
- - Paddle
  - Scoreboard
  - Timer
 

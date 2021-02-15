@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Ball.h";
 #include "Paddle.h";
+#include "ScoreBoard.h";
 
 int main()
 {
@@ -23,10 +24,6 @@ int main()
 
 	sf::Clock clock = sf::Clock::Clock();
 	
-	////		  ////
-	// GAME VISUALS //
-	////		  ////
-
 	// Ball
 	float ballSpeed = 200.0f; 
 	float ballStartingX = 25;
@@ -37,14 +34,24 @@ int main()
 	float paddleSpeed = 100.0f;
 	Paddle paddle(gameViewWidth, gameViewHeight, paddleSpeed);
 
+	// Score
+	sf::Font font;
+	if (!font.loadFromFile("consola.ttf"))
+		return EXIT_FAILURE;
+
+	ScoreBoard scoreBoard(gameViewWidth, gameViewHeight, font);
+
+	int playerScore = 10;
+
 	while (window.isOpen())
 	{
 		while (window.pollEvent(event)) {
 			float deltaTime = clock.restart().asSeconds();
 
-			/* MOVE */
+			/* MOVE & UPDATE */
 			ball.Move(deltaTime);
 			paddle.Move(deltaTime);
+			scoreBoard.Update(playerScore);
 
 			/* CLOSE */
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || event.type == sf::Event::Closed)
@@ -56,6 +63,7 @@ int main()
 			/* DRAW */
 			ball.Draw(window);
 			paddle.Draw(window);
+			scoreBoard.Draw(window);
 
 			/* DISPLAY */
 			window.display();
