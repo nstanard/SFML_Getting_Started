@@ -1,14 +1,19 @@
 #include "Ball.h"
+#include <iostream>
 
 // https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1CircleShape.php
 Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float positionY, float speed)
 {
 	this->gameViewWidth = gameViewWidth;
 	this->gameViewHeight = gameViewHeight;
-
 	this->speed = speed;
 
 	radius = 10.0f;
+
+	std::cout << gameViewHeight;
+	// https://www.cplusplus.com/reference/cstdlib/rand/
+	// 0 -> gameViewHeight
+	//startingY = rand() % gameViewHeight;
 
 	ball.setPosition(positionX, positionY);
 	ball.setRadius(radius - 3);
