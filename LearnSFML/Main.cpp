@@ -33,11 +33,14 @@ int main()
 	/* initialize random seed */
 	srand(time(NULL));
 
+	const float pi = 3.14159f;
+
 	// Ball
-	float ballSpeed = 175.0f; 
+	float ballAngle = 0.6f;
+	float ballSpeed = 200.0f;
 	float ballStartingX = 25;
 	float ballStartingY = rand() % (int)gameViewHeight + 25;
-	Ball ball(gameViewWidth, gameViewHeight, ballStartingX, ballStartingY, ballSpeed);
+	Ball ball(gameViewWidth, gameViewHeight, ballStartingX, ballStartingY, ballSpeed, ballAngle);
 
 	// Paddle
 	float paddleSpeed = 100.0f;

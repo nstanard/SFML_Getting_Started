@@ -5,7 +5,7 @@
 class Ball
 {
 public:
-	Ball(float gameViewWidth, float gameViewHeight, float positionX, float positionY, float speed);
+	Ball(float gameViewWidth, float gameViewHeight, float positionX, float positionY, float speed, float ballAngle);
 	~Ball();
 
 	void Move(float deltaTime);
@@ -17,6 +17,7 @@ private:
 	float speed;
 	float radius;
 	float ballSize;
+	float ballAngle;
 
 	float gameViewWidth;
 	float gameViewHeight;

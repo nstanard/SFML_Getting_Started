@@ -2,11 +2,12 @@
 #include <iostream>
 
 // https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1CircleShape.php
-Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float positionY, float speed)
+Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float positionY, float speed, float ballAngle)
 {
 	this->gameViewWidth = gameViewWidth;
 	this->gameViewHeight = gameViewHeight;
 	this->speed = speed;
+	this->ballAngle = ballAngle;
 
 	this->startingX = positionX;
 	this->startingY = positionY;
@@ -26,37 +27,26 @@ Ball::~Ball()
 
 void Ball::Move(float deltaTime)
 {
-	// Velocity = Speed in a given direction
-	float ballVelocity = speed * deltaTime;
-	float velocityX = ballVelocity;
-	float velocityY = ballVelocity;
-
 	if (ball.getPosition().x >= gameViewWidth - ballSize * 2) {
 		// RIGHT!
-		//ball.setPosition(startingX, startingY);
+		ballAngle = 0.6;
 	}
 	else if (ball.getPosition().y >= gameViewHeight - ballSize * 2) {
 		// BOTTOM!
-		//ball.setPosition(startingX, startingY);
+		ballAngle = -.04;
 	}
 	else if (ball.getPosition().x <= 0 + ballSize * 2) {
 		// LEFT!
-		//ball.setPosition(startingX, startingY);
 	}
 	else if (ball.getPosition().y <= 0 + ballSize * 2) {
 		// TOP!
-		//ball.setPosition(startingX, startingY);
+		ballAngle = -.04;
 	}
-	else
-	{
-		//ball.move(-.05, .05); // left, down
-		//ball.move(-.05, -.05); // left, up
-		//ball.move(.05, -.05); // right, up
-		//ball.move(.05, .05); // right, down
-		
-		ball.move(velocityX, velocityY);
-	}
-
+	
+	float factor = speed * deltaTime;
+	float offsetX = cos(ballAngle) * factor;
+	float offsetY = sin(ballAngle) * factor;
+	ball.move(offsetX, offsetY);
 }
 
 void Ball::Draw(sf::RenderWindow& window)
