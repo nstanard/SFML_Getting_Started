@@ -1,14 +1,14 @@
 #include "ScoreBoard.h"
 #include <iostream>
 
-ScoreBoard::ScoreBoard(float gameViewWidth, float gameViewHeight, sf::Font& font)
+ScoreBoard::ScoreBoard(float gameViewWidth, float gameViewHeight, sf::Font& font, int playerScore)
 {
 	float halfGameViewWidth = gameViewWidth / 2;
 
-	text.setString("0");
+	text.setString(std::to_string(playerScore));
 	text.setCharacterSize(50);
 	text.setFont(font);
-	text.setPosition(10, 10);
+	text.setPosition(halfGameViewWidth, 10);
 }
 
 ScoreBoard::~ScoreBoard()

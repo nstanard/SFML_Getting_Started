@@ -39,9 +39,9 @@ int main()
 	if (!font.loadFromFile("consola.ttf"))
 		return EXIT_FAILURE;
 
-	ScoreBoard scoreBoard(gameViewWidth, gameViewHeight, font);
+	int playerScore = 0;
+	ScoreBoard scoreBoard(gameViewWidth, gameViewHeight, font, playerScore);
 
-	int playerScore = 10;
 
 	while (window.isOpen())
 	{

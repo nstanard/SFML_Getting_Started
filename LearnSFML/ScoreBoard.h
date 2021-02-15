@@ -5,7 +5,7 @@
 class ScoreBoard
 {
 public:
-	ScoreBoard(float gameViewWidth, float gameViewHeight, sf::Font& font);
+	ScoreBoard(float gameViewWidth, float gameViewHeight, sf::Font& font, int playerScore);
 	~ScoreBoard();
 
 	void Update(int playerScore);

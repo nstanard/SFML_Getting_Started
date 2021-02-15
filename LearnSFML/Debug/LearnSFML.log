@@ -1,9 +1,0 @@
-﻿  Main.cpp
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(21,55): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Main.cpp(21,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-  ScoreBoard.cpp
-  Generating Code...
-  LearnSFML.vcxproj -> C:\Users\SlugO\Development\SFML_Getting_Started\LearnSFML\Debug\LearnSFML.exe
