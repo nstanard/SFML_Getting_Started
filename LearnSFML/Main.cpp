@@ -36,10 +36,21 @@ int main()
 	const float pi = 3.14159f;
 
 	// Ball
-	float ballAngle = 0.6f;
+	//int angleSeed = rand() % 60 + 1;
+	//int upOrDown = angleSeed % 2;
+	//float scaledAngle = angleSeed * .01;
+	//if (upOrDown == 0) {
+	//	scaledAngle = -scaledAngle;
+	//}
+
+	float ballAngle = 0.0f;
+	float ballStartingX = gameViewWidth / 2;
+	float ballStartingY = gameViewHeight / 2;
+	//float ballStartingX = 25;
+	//float ballStartingY = rand() % (int)gameViewHeight + 25;
+
 	float ballSpeed = 200.0f;
-	float ballStartingX = 25;
-	float ballStartingY = rand() % (int)gameViewHeight + 25;
+
 	Ball ball(gameViewWidth, gameViewHeight, ballStartingX, ballStartingY, ballSpeed, ballAngle);
 
 	// Paddle
