@@ -1,5 +1,4 @@
 #include "Ball.h"
-#include <iostream>
 
 // https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1CircleShape.php
 Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float positionY, float speed, float ballAngle)
@@ -51,6 +50,7 @@ void Ball::Move(float deltaTime)
 		ball.setPosition(ball.getPosition().x, 0 + ballSize * 2.5);
 	}
 
+	// Can we do this with vectors/geometry instead?
 	float offsetX = cos(ballAngle) * factor;
 	float offsetY = sin(ballAngle) * factor;
 	ball.move(offsetX, offsetY);

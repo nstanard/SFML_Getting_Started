@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 #include <stdlib.h>
 #include <time.h>
@@ -82,7 +81,7 @@ int main()
 
 			/* DRAW */
 			ball.Draw(window);
-			paddle.Draw(window);
+			//paddle.Draw(window);
 			scoreBoard.Draw(window);
 
 			/* DISPLAY */

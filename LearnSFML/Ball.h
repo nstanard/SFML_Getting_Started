@@ -14,7 +14,7 @@ public:
 private:
 	sf::CircleShape ball;
 
-	float pi;
+	const float pi = 3.14159f;
 	float speed;
 	float radius;
 	float ballSize;
