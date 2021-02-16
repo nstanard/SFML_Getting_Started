@@ -18,7 +18,7 @@ Ball::Ball(float gameViewWidth, float gameViewHeight, float positionX, float pos
 	ball.setPosition(startingX, startingY);
 	ball.setRadius(radius - 3);
 	ball.setFillColor(sf::Color::White);
-	ball.setOrigin(radius / 2, radius / 2);
+	//ball.setOrigin(radius / 2, radius / 2);
 
 	font.loadFromFile("consola.ttf");
 }
@@ -30,36 +30,37 @@ Ball::~Ball()
 void Ball::Move(float deltaTime)
 {
 	// detect wall collisions
-	if (ball.getPosition().x >= gameViewWidth - ballSize * 2) {
-		// RIGHT!
+	bool rightWallHit = ball.getPosition().x >= gameViewWidth - radius;
+	bool leftWallHit = ball.getPosition().x <= 0;
+	bool bottomWallHit = ball.getPosition().y >= gameViewHeight - radius;
+	bool topWallHit = ball.getPosition().y <= 0;
+
+	if (rightWallHit) {
 		//speed += 50;
 		ballAngle = pi - ballAngle;
-		ball.setPosition(ball.getPosition().x - ballSize * 2.5, ball.getPosition().y);
+		ball.setPosition(ball.getPosition().x - radius, ball.getPosition().y);
 	}
-	else if (ball.getPosition().y >= gameViewHeight - ballSize * 2) {
-		// BOTTOM!
+	else if (bottomWallHit) {
 		//speed += 50;
 		ballAngle *= -1;
-		ball.setPosition(ball.getPosition().x, gameViewHeight - ballSize * 2.5);
+		ball.setPosition(ball.getPosition().x, gameViewHeight - radius);
 	}
-	else if (ball.getPosition().x <= 0 + ballSize * 2) {
-		// LEFT!
+	else if (leftWallHit) {
 		//speed += 50;
 		ballAngle = pi - ballAngle;
-		ball.setPosition(ball.getPosition().x + ballSize * 2.5, ball.getPosition().y);
+		ball.setPosition(ball.getPosition().x + radius, ball.getPosition().y);
 	}
-	else if (ball.getPosition().y <= 0 + ballSize * 2) {
-		// TOP!
+	else if (topWallHit) {
 		//speed += 50;
 		ballAngle *= -1;
-		ball.setPosition(ball.getPosition().x, 0 + ballSize * 2.5);
+		ball.setPosition(ball.getPosition().x, 0 + radius);
 	}
-	else {
-		float factor = speed * deltaTime;
-		float offsetX = cos(ballAngle) * factor;
-		float offsetY = sin(ballAngle) * factor;
-		ball.move(offsetX, offsetY);
-	}
+	//else {
+	float factor = speed * deltaTime;
+	float offsetX = cos(ballAngle) * factor;
+	float offsetY = sin(ballAngle) * factor;
+	ball.move(offsetX, offsetY);
+	//}
 }
 
 void Ball::Draw(sf::RenderWindow& window)
@@ -69,7 +70,8 @@ void Ball::Draw(sf::RenderWindow& window)
 	sf::Text text;
 	text.setFont(font);
 	text.setCharacterSize(15);
-	text.setString("Angle: " + std::to_string(ballAngle));
+	//text.setString("Angle: " + std::to_string(ballAngle));
+	//text.setString("Origin: " + std::to_string(ball.getOrigin().x) + " " + std::to_string(ball.getOrigin().y));
 	text.setPosition(10, gameViewHeight - 20);
 	window.draw(text);
 }
