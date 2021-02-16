@@ -26,7 +26,7 @@ Ball::~Ball()
 
 void Ball::Move(float deltaTime)
 {
-
+	// detect wall collisions
 	if (ball.getPosition().x >= gameViewWidth - ballSize * 2) {
 		// RIGHT!
 		speed += 50;
