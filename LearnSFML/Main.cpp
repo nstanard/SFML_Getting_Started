@@ -82,7 +82,7 @@ int main()
 			/* DRAW */
 			ball.Draw(window);
 			//paddle.Draw(window);
-			scoreBoard.Draw(window);
+			//scoreBoard.Draw(window);
 
 			/* DISPLAY */
 			window.display();

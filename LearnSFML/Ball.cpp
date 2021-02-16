@@ -26,7 +26,6 @@ Ball::~Ball()
 
 void Ball::Move(float deltaTime)
 {
-	float factor = speed * deltaTime;
 
 	if (ball.getPosition().x >= gameViewWidth - ballSize * 2) {
 		// RIGHT!
@@ -41,7 +40,10 @@ void Ball::Move(float deltaTime)
 		ball.setPosition(ball.getPosition().x, gameViewHeight - ballSize * 2.5);
 	}
 	else if (ball.getPosition().x <= 0 + ballSize * 2) {
-		// LEFT! -- fall through
+		// LEFT!
+		speed += 50;
+		ballAngle = pi - ballAngle;
+		ball.setPosition(ball.getPosition().x + ballSize * 2.5, ball.getPosition().y);
 	}
 	else if (ball.getPosition().y <= 0 + ballSize * 2) {
 		// TOP!
@@ -50,7 +52,7 @@ void Ball::Move(float deltaTime)
 		ball.setPosition(ball.getPosition().x, 0 + ballSize * 2.5);
 	}
 
-	// Can we do this with vectors/geometry instead?
+	float factor = speed * deltaTime;
 	float offsetX = cos(ballAngle) * factor;
 	float offsetY = sin(ballAngle) * factor;
 	ball.move(offsetX, offsetY);
