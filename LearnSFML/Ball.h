@@ -14,6 +14,7 @@ public:
 private:
 	sf::CircleShape ball;
 
+	float pi;
 	float speed;
 	float radius;
 	float ballSize;

@@ -27,38 +27,33 @@ Ball::~Ball()
 
 void Ball::Move(float deltaTime)
 {
+	float factor = speed * deltaTime;
+
 	if (ball.getPosition().x >= gameViewWidth - ballSize * 2) {
 		// RIGHT!
-		//speed += 50;
-		//ballAngle = sin(ballAngle);
-		//ball.setPosition(ball.getPosition().x - ballSize * 2.5, ball.getPosition().y);
-
-		//std::cout << ball.getPosition().x << "\n";
-		//std::cout << ball.getPosition().y << "\n";
-		//std::cout << ballAngle << "\n";
-		//std::cout << cos(ballAngle) << "\n";
+		speed += 50;
+		ballAngle = pi - ballAngle;
+		ball.setPosition(ball.getPosition().x - ballSize * 2.5, ball.getPosition().y);
 	}
 	else if (ball.getPosition().y >= gameViewHeight - ballSize * 2) {
 		// BOTTOM!
 		speed += 50;
-		ballAngle = -ballAngle;
+		ballAngle *= -1;
 		ball.setPosition(ball.getPosition().x, gameViewHeight - ballSize * 2.5);
 	}
 	else if (ball.getPosition().x <= 0 + ballSize * 2) {
-		// LEFT!
+		// LEFT! -- fall through
 	}
 	else if (ball.getPosition().y <= 0 + ballSize * 2) {
 		// TOP!
 		speed += 50;
-		ballAngle = -ballAngle;
+		ballAngle *= -1;
 		ball.setPosition(ball.getPosition().x, 0 + ballSize * 2.5);
 	}
-	//else {
-	float factor = speed * deltaTime;
+
 	float offsetX = cos(ballAngle) * factor;
 	float offsetY = sin(ballAngle) * factor;
 	ball.move(offsetX, offsetY);
-	//}
 }
 
 void Ball::Draw(sf::RenderWindow& window)
