@@ -7,9 +7,10 @@
 #include "Paddle.h";
 #include "ScoreBoard.h";
 
-
 int main()
 {
+	const double pi = 3.14159265358979323846;
+
 	// GAME SETTINGS
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 8;
@@ -32,8 +33,6 @@ int main()
 	/* initialize random seed */
 	srand(time(NULL));
 
-	const float pi = 3.14159f;
-
 	// Ball
 	int angleSeed = rand() % 60 + 1;
 	int upOrDown = angleSeed % 2;
@@ -46,7 +45,7 @@ int main()
 	float ballStartingX = gameViewWidth / 2;
 	float ballStartingY = gameViewHeight / 2;
 
-	float ballSpeed = 200.0f;
+	float ballSpeed = 300.0f;
 
 	Ball ball(gameViewWidth, gameViewHeight, ballStartingX, ballStartingY, ballSpeed, ballAngle);
 
